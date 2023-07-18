@@ -117,7 +117,7 @@ class _zonhState extends State<zonh> {
     GlobalKey<ScaffoldState> ahmed = new GlobalKey<ScaffoldState>();
    return DefaultTabController(length: 3,
        child:Scaffold(
-         appBar: AppBar(title: Text("ahmed"),
+         appBar: AppBar(title: Text("zon"),
 
          bottom: TabBar(onTap:(i){
 
