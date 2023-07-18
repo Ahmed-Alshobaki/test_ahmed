@@ -128,9 +128,9 @@ class _zonhState extends State<zonh> {
            }
 
          },indicatorWeight: 5,indicatorColor:Colors.red,tabs: [
-           Tab(child: Text("1"),),
-           Tab(child: Text("2"),),
-           Tab(child: Text("3"),),
+           Tab(child: Text("1"),icon:Icon(Icons.access_time_filled),),
+           Tab(child: Text("2"),icon:Icon(Icons.accessibility)),
+           Tab(child: Text("3"),icon:Icon(Icons.access_time_filled_rounded)),
          ],),
          ),
 
