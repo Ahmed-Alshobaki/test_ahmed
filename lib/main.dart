@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+
+
 void main() {
   runApp( app());
 }
@@ -112,38 +114,34 @@ class _zonhState extends State<zonh> {
   ];
   @override
   Widget build(BuildContext context) {
-   return Scaffold(
-        appBar: AppBar(
-          title: Text("ahmed zon"),
-          leading:IconButton(icon: Icon(Icons.arrow_back), onPressed: () {  },),
-          actions: [
-           IconButton(onPressed: (){}, icon: Icon(Icons.exit_to_app))
-          ],
-          backgroundColor: Colors.red,
-          systemOverlayStyle: SystemUiOverlayStyle.dark,
-          centerTitle: true,
+    GlobalKey<ScaffoldState> ahmed = new GlobalKey<ScaffoldState>();
+   return DefaultTabController(length: 3,
+       child:Scaffold(
+         appBar: AppBar(title: Text("ahmed"),
 
-        ),
-    drawer: Drawer(),
-    body: Container(
-    child: GridView.builder(itemCount : list.length,
-        scrollDirection: Axis.vertical,
+         bottom: TabBar(onTap:(i){
+           switch(i){
+             case 0: print("1");break;
+             case 1: print("2");break;
+             case 2: print("3");break;
+           }
 
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,crossAxisSpacing: 10,childAspectRatio:0.5 ), itemBuilder: (contx,i){
-          return Container(
+         },indicatorColor:Colors.red,tabs: [
+           Tab(child: Text("1"),),
+           Tab(child: Text("2"),),
+           Tab(child: Text("3"),),
+         ],),
+         ),
 
+         body: TabBarView(
+           children: [
+           Container(child: Text("ahmed zon1"),),
+           Container(child: Text("ahmed zon2"),),
+           Container(child: Text("ahmed 4"),),
 
-            color: Colors.pink,
-            child: ListTile(
-              title: Text("${list[i]["ahmed"]}"),
-              subtitle: Text("${list[i]["age"]}"),
-            ),
-          );
+         ],),
 
-    }),
-       
-     ),
-     );
+       ));
   }
 }
 
