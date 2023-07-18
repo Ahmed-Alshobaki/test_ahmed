@@ -120,13 +120,14 @@ class _zonhState extends State<zonh> {
          appBar: AppBar(title: Text("ahmed"),
 
          bottom: TabBar(onTap:(i){
+
            switch(i){
              case 0: print("1");break;
              case 1: print("2");break;
              case 2: print("3");break;
            }
 
-         },indicatorColor:Colors.red,tabs: [
+         },indicatorWeight: 5,indicatorColor:Colors.red,tabs: [
            Tab(child: Text("1"),),
            Tab(child: Text("2"),),
            Tab(child: Text("3"),),
