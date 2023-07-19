@@ -30,121 +30,96 @@ class zonh extends StatefulWidget {
 
 }
 
-class _zonhState extends State<zonh> {
-  List list = [
-    {
-      "ahmed" : "zon",
-      "age" : "18",
+class _zonhState extends State<zonh> with SingleTickerProviderStateMixin{
+  late TabController zon;
+   late int index= 0 ;
+  late PageController zon1;
+   List list =[
+     "images/ahmed.jpg",
+         "images/zon.png",
+         "images/ahmed.jpg",
+         "images/zon.png",
 
-    },
-    {
-      "ahmed" : "zon",
-      "age" : "17",
 
-    },
-    {
-      "ahmed" : "zon",
-      "age" : "13",
+   ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    zon1 =new PageController(
+      initialPage: 1
+    );
 
-    },
-    {
-      "ahmed" : "zon",
-      "age" : "13",
 
-    },
-    {
-      "ahmed" : "zon",
-      "age" : "13",
-
-    },
-    {
-      "ahmed" : "zon",
-      "age" : "13",
-
-    }, {
-      "ahmed" : "zon",
-      "age" : "13",
-
-    },
-    {
-      "ahmed" : "zon",
-      "age" : "18",
-
-    },
-    {
-      "ahmed" : "zon",
-      "age" : "17",
-
-    },
-    {
-      "ahmed" : "zon",
-      "age" : "13",
-
-    },
-    {
-      "ahmed" : "zon",
-      "age" : "13",
-
-    },
-    {
-      "ahmed" : "zon",
-      "age" : "13",
-
-    },
-    {
-      "ahmed" : "zon",
-      "age" : "13",
-
-    }, {
-      "ahmed" : "zon",
-      "age" : "13",
-
-    },
-    {
-      "zon" : "zon",
-      "zon" : "13",
-
-    },
-    {
-      "hala" : "zon",
-      "hala" : "13",
-
-    },
-
-  ];
+  }
   @override
   Widget build(BuildContext context) {
-    GlobalKey<ScaffoldState> ahmed = new GlobalKey<ScaffoldState>();
-   return DefaultTabController(length: 3,
-       child:Scaffold(
-         appBar: AppBar(title: Text("zon"),
 
-         bottom: TabBar(onTap:(i){
 
-           switch(i){
-             case 0: print("1");break;
-             case 1: print("2");break;
-             case 2: print("3");break;
-           }
+    late TextEditingController ahmed = new TextEditingController();
 
-         },indicatorWeight: 5,indicatorColor:Colors.red,tabs: [
-           Tab(child: Text("1"),icon:Icon(Icons.access_time_filled),),
-           Tab(child: Text("2"),icon:Icon(Icons.accessibility)),
-           Tab(child: Text("3"),icon:Icon(Icons.access_time_filled_rounded)),
-         ],),
-         ),
 
-         body: TabBarView(
-           children: [
-           Container(child: Text("ahmed zon1"),),
-           Container(child: Text("ahmed zon2"),),
-           Container(child: Text("ahmed 4"),),
+   return
+       Scaffold(
+         body: Column(children: [
+        Container(height:400,child:    PageView.builder(
+          itemCount: list.length,
+          onPageChanged: (i){
+            index =i;
+            print(i);
+          },
+          controller: zon1,
 
-         ],),
+          itemBuilder: (BuildContext context, int index) {
 
-       ));
+            return Image.asset(list[index],fit: BoxFit.cover,);
+          },
+
+        ),),
+          TextButton(onPressed: (){
+           zon1.animateTo(3, duration: Duration(seconds: 1), curve: Curves.bounceInOut);
+            print(index);
+          }, child: Text("add{3}",style: TextStyle(backgroundColor: Colors.black),)),
+           TextFormField(
+             controller: ahmed,
+             style: TextStyle(color: Colors.purple),
+             maxLength: 20,
+
+             keyboardType: TextInputType.phone,
+             cursorColor: Colors.yellow,
+             decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+
+                    borderSide: BorderSide(
+                      color: Colors.yellow,
+                      width: 2
+
+
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+               focusedBorder: OutlineInputBorder(
+
+
+                 borderSide: BorderSide(
+                     color: Colors.black54,
+                     width: 2
+
+
+                 ),
+               )
+
+
+             ),
+           ),
+           TextButton(onPressed: (){
+             print(ahmed.text);
+
+           }, child: Text("ahmed"))
+         ],)
+
+       );
   }
 }
-
 
 
